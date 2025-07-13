@@ -72,6 +72,24 @@ ax.config:Register("monolith.background.opacity", {
     Max = 255
 })
 
+ax.config:Register("monolith.playerinfo.enabled", {
+    Name = "Monolith Player Info Enabled",
+    Description = "Enable or disable the player info 3D2D display.",
+    Category = "Monolith",
+    Type = ax.types.bool,
+    Default = true
+})
+
+ax.config:Register("monolith.playerinfo.distance", {
+    Name = "Monolith Player Info Distance",
+    Description = "The distance at which the player info 3D2D display will be shown.",
+    Category = "Monolith",
+    Type = ax.types.number,
+    Default = 200,
+    Min = 0,
+    Max = 1000
+})
+
 function MODULE:Initialize()
     ax.util:Print("I'm gay for Monolith UI!")
 end
