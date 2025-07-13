@@ -140,3 +140,11 @@ function MODULE:PostDrawOpaqueRenderables()
         draw.SimpleText(factionName, "monolith.playerinfo.subtitle", textX, 0, Color(150, 150, 150, alpha), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
     cam.End3D2D()
 end
+
+function MODULE:ShouldDrawTargetInfo(entity)
+    if ( !ax.config:Get("monolith.playerinfo.enabled", true) ) then return end
+
+    if ( IsValid(entity) and entity.GetCharacter ) then
+        return false
+    end
+end
