@@ -73,13 +73,13 @@ function PANEL:Populate()
 
     local title = self.container:Add("ax.text")
     title:SetFont("monolith.hl2.small")
-    title:SetText("H A L F - L I F E ²")
+    title:SetText(ax.config:Get("monolith.title"))
     title:SetPos(halfWidth - title:GetWide() / 2, halfHeight - title:GetTall() * 2)
     title:SetExpensiveShadow(4, Color(0, 0, 0, 200))
 
     local subtitle = self.container:Add("ax.text")
     subtitle:SetFont("monolith.din.medium")
-    subtitle:SetText("R   O   L   E   P   L   A   Y")
+    subtitle:SetText(ax.config:Get("monolith.subtitle"))
     subtitle:SetWide(title:GetWide())
     subtitle:SetContentAlignment(5)
     subtitle:SetPos(halfWidth - subtitle:GetWide() / 2, halfHeight - subtitle:GetTall())
@@ -172,14 +172,14 @@ function PANEL:Populate()
     buttons:SetY(halfHeight + subtitle:GetTall() * 2)
 end
 
-local background = ax.util:GetMaterial("overlays/hls_background_grunge.png", "smooth mips")
 function PANEL:Paint(width, height)
     ax.util:DrawBlur(self, 8)
 
     surface.SetDrawColor(0, 0, 0, 100)
     surface.DrawRect(0, 0, width, height)
 
-    surface.SetDrawColor(255, 255, 255, 240)
+    local background = ax.util:GetMaterial(ax.config:Get("monolith.background"), ax.config:Get("monolith.background.parameters"))
+    surface.SetDrawColor(255, 255, 255, ax.config:Get("monolith.background.opacity"))
     surface.SetMaterial(background)
     surface.DrawTexturedRect(0, 0, width, height)
 end

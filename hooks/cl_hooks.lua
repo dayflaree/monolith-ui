@@ -25,32 +25,32 @@ function MODULE:LoadFonts()
         weight = 400
     })
     surface.CreateFont("monolith.hl2.large", {
-        font = "HalfLife2",
+        font = ax.config:Get("monolith.title.font"),
         size = ScreenScale(32)
     })
 
     surface.CreateFont("monolith.hl2.medium", {
-        font = "HalfLife2",
+        font = ax.config:Get("monolith.title.font"),
         size = ScreenScale(24)
     })
 
     surface.CreateFont("monolith.hl2.small", {
-        font = "HalfLife2",
+        font = ax.config:Get("monolith.title.font"),
         size = ScreenScale(16)
     })
 
     surface.CreateFont("monolith.din.large", {
-        font = "Alte DIN 1451 Mittelschrift",
+        font = ax.config:Get("monolith.subtitle.font"),
         size = ScreenScale(24)
     })
 
     surface.CreateFont("monolith.din.medium", {
-        font = "Alte DIN 1451 Mittelschrift",
+        font = ax.config:Get("monolith.subtitle.font"),
         size = ScreenScale(12)
     })
 
     surface.CreateFont("monolith.din.small", {
-        font = "Alte DIN 1451 Mittelschrift",
+        font = ax.config:Get("monolith.subtitle.font"),
         size = ScreenScale(8)
     })
 end
