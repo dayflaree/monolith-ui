@@ -78,7 +78,7 @@ function PANEL:Paint(width, height)
     surface.SetDrawColor(0, 0, 0, 100)
     surface.DrawRect(0, 0, width, height)
 
-    surface.SetDrawColor(255, 255, 255, 250)
+    surface.SetDrawColor(255, 255, 255, 240)
     surface.SetMaterial(background)
     surface.DrawTexturedRect(0, 0, width, height)
 end
