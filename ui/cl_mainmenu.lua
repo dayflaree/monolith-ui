@@ -83,7 +83,7 @@ function PANEL:Populate()
     -- Remove trailing spaces
     titleText = titleText:Trim()
 
-    local title = self:Add("ax.text")
+    local title = self.container:Add("ax.text")
     title:SetFont("monolith.title")
     title:SetText(titleText, true)
     title:SetTextColor(ax.config:Get("monolith.title.color", color_white))
@@ -102,7 +102,7 @@ function PANEL:Populate()
     -- Remove trailing spaces
     subtitleText = subtitleText:Trim()
 
-    local subtitle = self:Add("ax.text")
+    local subtitle = self.container:Add("ax.text")
     subtitle:SetFont("monolith.subtitle")
     subtitle:SetText(subtitleText)
     subtitle:SetTextColor(ax.config:Get("monolith.subtitle.color", Color(150, 150, 150)))
