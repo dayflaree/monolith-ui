@@ -48,9 +48,11 @@ end
 
 local unknownIcon = ax.util:GetMaterial("icons/unknown_person.png", "smooth mips")
 local factionIcons = {
-    [FACTION_REFUGEE] = ax.util:GetMaterial("icons/npc_icon_citizen.png", "smooth mips"),
-    [FACTION_COMBINE] = ax.util:GetMaterial("icons/npc_icon_transhumanforces.png", "smooth mips"),
-    [FACTION_VORTIGAUNT] = ax.util:GetMaterial("icons/npc_icon_vortigaunt.png", "smooth mips")
+    [FACTION_CITIZEN] = ax.util:GetMaterial("icons/npc_icon_citizen.png", "smooth mips"),
+    [FACTION_MPF] = ax.util:GetMaterial("icons/npc_icon_civilprotection.png", "smooth mips"),
+    [FACTION_OTA] = ax.util:GetMaterial("icons/npc_icon_transhumanforces.png", "smooth mips"),
+    [FACTION_VORTIGAUNT] = ax.util:GetMaterial("icons/npc_icon_vortigaunt.png", "smooth mips"),
+    [FACTION_ADMIN] = ax.util:GetMaterial("icons/npc_icon_combineclaw_upright.png", "smooth mips")
 }
 
 function MODULE:PostDrawOpaqueRenderables()
