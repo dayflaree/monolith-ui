@@ -113,7 +113,7 @@ function PANEL:PopulateFactionSelect()
         local description = (v.Description and ax.utf8:Upper(v.Description)) or "UNKNOWN FACTION DESCRIPTION"
         description = ax.util:CapTextWord(description, factionList:GetTall() / 3) -- Unreliable, but it works for now
 
-        local descriptionWrapped = ax.util:GetWrappedText(description, "ax.bold", factionList:GetTall() * 1.25)
+        local descriptionWrapped = ax.util:GetWrappedText(description, "ax.regular.bold", factionList:GetTall() * 1.25)
 
         local factionButton = factionList:Add("monolith.button")
         factionButton:Dock(LEFT)
@@ -169,9 +169,9 @@ function PANEL:PopulateFactionSelect()
 
             draw.SimpleText(name, font, ScreenScale(8), imageHeight - boxHeight + boxHeightStatic / 2, textColor, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
 
-            local textHeight = ax.util:GetTextHeight("ax.bold") / 1.5
+            local textHeight = ax.util:GetTextHeight("ax.regular.bold") / 1.5
             for d = 1, #descriptionWrapped do
-                draw.SimpleText(descriptionWrapped[d], "ax.bold", ScreenScale(8), imageHeight - boxHeight + boxHeightStatic + (d - 1) * textHeight, ColorAlpha(textColor, 255 * inertia), TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+                draw.SimpleText(descriptionWrapped[d], "ax.regular.bold", ScreenScale(8), imageHeight - boxHeight + boxHeightStatic + (d - 1) * textHeight, ColorAlpha(textColor, 255 * inertia), TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
             end
         end
 

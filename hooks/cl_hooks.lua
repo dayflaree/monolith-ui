@@ -119,22 +119,25 @@ function MODULE:PostDrawOpaqueRenderables()
     end
 
     local iconSize = ScreenScale(32) + ScreenScaleH(32)
+    local textX = iconSize * 3
 
+    cam.IgnoreZ(true)
     cam.Start3D2D(pos, ang, 0.025)
-        draw.RoundedBox(0, iconSize, -iconSize / 2, iconSize, iconSize, Color(0, 0, 0, alpha * 0.75))
+        draw.RoundedBox(0, textX - iconSize, -iconSize / 2, iconSize, iconSize, Color(0, 0, 0, alpha / 1.125))
         surface.SetDrawColor(factionColor.r - 25, factionColor.g - 25, factionColor.b - 25, alpha)
-        surface.DrawOutlinedRect(iconSize, -iconSize / 2, iconSize, iconSize, 5)
+        surface.DrawOutlinedRect(textX - iconSize, -iconSize / 2, iconSize, iconSize, 5)
 
         surface.SetMaterial(icon)
         surface.SetDrawColor(255, 255, 255, alpha)
-        surface.DrawTexturedRect(iconSize, -iconSize / 2, iconSize, iconSize)
+        surface.DrawTexturedRect(textX - iconSize, -iconSize / 2, iconSize, iconSize)
 
-        local textX = iconSize * 2 + ScreenScale(8)
+        textX = textX + iconSize / 4
         draw.SimpleText(statusText, "monolith.playerinfo.title", textX + 4, 4, Color(0, 0, 0, alpha / 2), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
         draw.SimpleText(statusText, "monolith.playerinfo.title", textX, 0, factionColor, TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
         draw.SimpleText(factionName, "monolith.playerinfo.subtitle", textX + 4, 4, Color(0, 0, 0, alpha / 2), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
         draw.SimpleText(factionName, "monolith.playerinfo.subtitle", textX, 0, Color(150, 150, 150, alpha), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
     cam.End3D2D()
+    cam.IgnoreZ(false)
 end
 
 function MODULE:ShouldDrawTargetInfo(entity)
