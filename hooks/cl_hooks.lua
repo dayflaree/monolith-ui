@@ -24,39 +24,15 @@ function MODULE:LoadFonts()
         size = ScreenScaleH(6),
         weight = 400
     })
-    surface.CreateFont("monolith.hl2.large", {
+
+    surface.CreateFont("monolith.title", {
         font = ax.config:Get("monolith.title.font"),
-        size = ScreenScaleH(32)
+        size = ScreenScaleH(ax.config:Get("monolith.title.size", 16))
     })
 
-    surface.CreateFont("monolith.hl2.medium", {
-        font = ax.config:Get("monolith.title.font"),
-        size = ScreenScaleH(24)
-    })
-
-    surface.CreateFont("monolith.hl2.small", {
-        font = ax.config:Get("monolith.title.font"),
-        size = ScreenScaleH(16)
-    })
-
-    surface.CreateFont("monolith.din.huge", {
+    surface.CreateFont("monolith.subtitle", {
         font = ax.config:Get("monolith.subtitle.font"),
-        size = ScreenScaleH(32)
-    })
-
-    surface.CreateFont("monolith.din.large", {
-        font = ax.config:Get("monolith.subtitle.font"),
-        size = ScreenScaleH(24)
-    })
-
-    surface.CreateFont("monolith.din.medium", {
-        font = ax.config:Get("monolith.subtitle.font"),
-        size = ScreenScaleH(12)
-    })
-
-    surface.CreateFont("monolith.din.small", {
-        font = ax.config:Get("monolith.subtitle.font"),
-        size = ScreenScaleH(8)
+        size = ScreenScaleH(ax.config:Get("monolith.subtitle.size", 12))
     })
 
     surface.CreateFont("monolith.playerinfo.title", {

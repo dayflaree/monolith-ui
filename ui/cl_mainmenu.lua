@@ -71,15 +71,41 @@ function PANEL:Populate()
     local halfWidth = ScrW() / 2
     local halfHeight = ScrH() / 2
 
-    local title = self.container:Add("ax.text")
-    title:SetFont("monolith.hl2.small")
-    title:SetText(ax.config:Get("monolith.title"))
+    local titleConfig = ax.config:Get("monolith.title", "HALF-LIFE²")
+    local titleText = ""
+    local titleSpacing = ax.config:Get("monolith.title.spacing", 1)
+
+    -- Add spacing between each character
+    for i = 1, #titleConfig do
+        titleText = titleText .. utf8.sub(titleConfig, i, i) .. string.rep(" ", titleSpacing)
+    end
+
+    -- Remove trailing spaces
+    titleText = titleText:Trim()
+
+    local title = self:Add("ax.text")
+    title:SetFont("monolith.title")
+    title:SetText(titleText, true)
+    title:SetTextColor(ax.config:Get("monolith.title.color", color_white))
     title:SetPos(halfWidth - title:GetWide() / 2, halfHeight - title:GetTall() * 2)
     title:SetExpensiveShadow(4, Color(0, 0, 0, 200))
 
-    local subtitle = self.container:Add("ax.text")
-    subtitle:SetFont("monolith.din.medium")
-    subtitle:SetText(ax.config:Get("monolith.subtitle"))
+    local subtitleConfig = ax.config:Get("monolith.subtitle", "ROLEPLAY")
+    local subtitleText = ""
+    local subtitleSpacing = ax.config:Get("monolith.subtitle.spacing", 3)
+
+    -- Add spacing between each character
+    for i = 1, #subtitleConfig do
+        subtitleText = subtitleText .. utf8.sub(subtitleConfig, i, i) .. string.rep(" ", subtitleSpacing)
+    end
+
+    -- Remove trailing spaces
+    subtitleText = subtitleText:Trim()
+
+    local subtitle = self:Add("ax.text")
+    subtitle:SetFont("monolith.subtitle")
+    subtitle:SetText(subtitleText)
+    subtitle:SetTextColor(ax.config:Get("monolith.subtitle.color", Color(150, 150, 150)))
     subtitle:SetWide(title:GetWide())
     subtitle:SetContentAlignment(5)
     subtitle:SetPos(halfWidth - subtitle:GetWide() / 2, halfHeight - subtitle:GetTall())
