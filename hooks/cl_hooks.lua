@@ -61,12 +61,12 @@ function MODULE:LoadFonts()
 
     surface.CreateFont("monolith.playerinfo.title", {
         font = "DIN Pro Bold",
-        size = ScreenScaleH(32)
+        size = ScreenScaleH(48)
     })
 
     surface.CreateFont("monolith.playerinfo.subtitle", {
         font = "DIN Pro Bold",
-        size = ScreenScaleH(16)
+        size = ScreenScaleH(24)
     })
 end
 
@@ -118,8 +118,8 @@ function MODULE:PostDrawOpaqueRenderables()
         statusText = "Unrecognized"
     end
 
-    local iconSize = ScreenScale(32) + ScreenScaleH(32)
-    local textX = iconSize * 3
+    local iconSize = ScreenScale(48) + ScreenScaleH(48)
+    local textX = iconSize * 2
 
     cam.IgnoreZ(true)
     cam.Start3D2D(pos, ang, 0.025)
@@ -131,7 +131,7 @@ function MODULE:PostDrawOpaqueRenderables()
         surface.SetDrawColor(255, 255, 255, alpha)
         surface.DrawTexturedRect(textX - iconSize, -iconSize / 2, iconSize, iconSize)
 
-        textX = textX + iconSize / 4
+        textX = textX + iconSize / 6
         draw.SimpleText(statusText, "monolith.playerinfo.title", textX + 4, 4, Color(0, 0, 0, alpha / 2), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
         draw.SimpleText(statusText, "monolith.playerinfo.title", textX, 0, factionColor, TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
         draw.SimpleText(factionName, "monolith.playerinfo.subtitle", textX + 4, 4, Color(0, 0, 0, alpha / 2), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
