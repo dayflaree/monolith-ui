@@ -65,20 +65,15 @@ local function GetHeadPosition(client)
 end
 
 function MODULE:DrawTargetInfo(client, alpha, is3D2D)
-    if ( is3D2D and client:IsPlayer() ) then
-        if ( !ax.config:Get("monolith.playerinfo.enabled", true) ) then return end
+    GAMEMODE.DrawTargetInfo = nil -- Prevent default draw target info
 
+    if ( is3D2D and client:IsPlayer() ) then
         local trace = LocalPlayer():GetEyeTrace()
         local target = trace.Entity
 
         if ( !IsValid(target) or !target:IsPlayer() or target == LocalPlayer() ) then
             return
         end
-
-        local distance = LocalPlayer():GetPos():Distance(target:GetPos())
-        local maxDistance = ax.config:Get("monolith.playerinfo.distance", 200)
-
-        if ( distance > maxDistance ) then return end
 
         local character = target:GetCharacter()
         if ( !character ) then return end
@@ -96,8 +91,8 @@ function MODULE:DrawTargetInfo(client, alpha, is3D2D)
         local pos = GetHeadPosition(target) + Vector(0, 0, 2)
         local ang = Angle(0, LocalPlayer():EyeAngles().y - 90, 90) -- Face the player
 
-        -- Calculate alpha based on distance
         factionColor.a = alpha
+
         local icon = factionIcons[faction and faction.ID] or unknownIcon
         if ( !isRecognized ) then
             icon = unknownIcon
@@ -110,7 +105,7 @@ function MODULE:DrawTargetInfo(client, alpha, is3D2D)
 
         cam.IgnoreZ(true)
         cam.Start3D2D(pos, ang, 0.025)
-            draw.RoundedBox(0, textX - iconSize, -iconSize / 2, iconSize, iconSize, Color(0, 0, 0, alpha / 1.125))
+            draw.RoundedBox(0, textX - iconSize, -iconSize / 2, iconSize, iconSize, Color(0, 0, 0, alpha / 1.25))
             surface.SetDrawColor(factionColor.r - 25, factionColor.g - 25, factionColor.b - 25, alpha)
             surface.DrawOutlinedRect(textX - iconSize, -iconSize / 2, iconSize, iconSize, 5)
 
@@ -125,7 +120,5 @@ function MODULE:DrawTargetInfo(client, alpha, is3D2D)
             draw.SimpleText(factionName, "monolith.playerinfo.subtitle", textX, 0, Color(150, 150, 150, alpha), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
         cam.End3D2D()
         cam.IgnoreZ(false)
-
-        return false -- Prevent default drawing player info
     end
 end
